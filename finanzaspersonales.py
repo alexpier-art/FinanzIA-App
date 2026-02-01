@@ -11,14 +11,14 @@ conn = st.connection("gsheets", type=GSheetsConnection)
 
 # Función para leer datos
 def leer_datos():
-    return conn.read(worksheet="Sheet1", ttl="0")
+    return conn.read(worksheet="BD_FinanzIA", ttl="0")
 
 
 # Función para guardar una nueva fila
 def guardar_fila(nueva_fila):
     df_actual = leer_datos()
     df_nuevo = pd.concat([df_actual, pd.DataFrame([nueva_fila])], ignore_index=True)
-    conn.update(worksheet="Sheet1", data=df_nuevo)
+    conn.update(worksheet="BD_FinanzIA", data=df_nuevo)
 
 
 # --- LÓGICA DE USUARIOS ---
